@@ -2,7 +2,9 @@ name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - claude/chiropractor-website-redesign-1t034z
   workflow_dispatch:
 
 permissions:
@@ -23,6 +25,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+        with:
+          # Turns Pages on for the repository if it has never been enabled,
+          # using the workflow's own pages:write token.
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
