@@ -78,7 +78,12 @@ python3 -m http.server 8000
 ## Publishing
 
 GitHub Pages needs to be switched on once, in
-**Settings → Pages → Build and deployment**. Two ways:
+**Settings → Pages → Build and deployment**, by someone with admin rights on
+the repository. This first switch can't be automated: creating a Pages site
+requires `Administration: write`, which an Actions `GITHUB_TOKEN` is never
+granted (`actions/configure-pages` with `enablement: true` fails with
+"Resource not accessible by integration"). Everything after it — every
+republish — is automatic. Two ways to make the switch:
 
 **Preview the review branch right now** — Source: *Deploy from a branch*,
 branch: `claude/chiropractor-website-redesign-1t034z`, folder: `/ (root)`.
