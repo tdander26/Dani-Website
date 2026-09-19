@@ -114,6 +114,9 @@ Please verify:
    transmit protected health information until that path is reviewed.
 6. **New patient forms link** points at the existing WordPress site; move the PDF
    into this repo when the old site is retired.
-7. **Photography** — the portrait and about images are reused from the current
+7. **Social share image** — `assets/img/og-card.jpg` is referenced with a
+   relative path, and the `og:url` tag points at robertsonchiro.com. Once the
+   final domain is settled, make both absolute so every scraper resolves them.
+8. **Photography** — the portrait and about images are reused from the current
    site. A short session of clinic and treatment photography would lift this
    design considerably.
