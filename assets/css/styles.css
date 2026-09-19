@@ -291,6 +291,16 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
 }
 .js .reveal.in{opacity:1;transform:none}
 
+/* Service cards keep their own surface so the grid lines never flash as a
+   grey block; only the contents animate in. */
+.js .card.reveal{opacity:1;transform:none}
+.js .card.reveal > *{
+  opacity:0;transform:translateY(18px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+  transition-delay:calc(var(--d,0) * 90ms);
+}
+.js .card.reveal.in > *{opacity:1;transform:none}
+
 .split{overflow:hidden}
 .split .w{display:inline-block;overflow:hidden;vertical-align:top}
 .split .w > span{
