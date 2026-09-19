@@ -77,9 +77,16 @@ python3 -m http.server 8000
 
 ## Publishing
 
-Pushing to `main` deploys to GitHub Pages via
-`.github/workflows/deploy.yml`. Enable it once under
-**Settings → Pages → Build and deployment → Source: GitHub Actions**.
+GitHub Pages needs to be switched on once, in
+**Settings → Pages → Build and deployment**. Two ways:
+
+**Preview the review branch right now** — Source: *Deploy from a branch*,
+branch: `claude/chiropractor-website-redesign-1t034z`, folder: `/ (root)`.
+The site appears at `https://tdander26.github.io/Dani-Website/` within a
+minute or two, no merge required.
+
+**Once it's approved** — merge to `main`, then set Source: *GitHub Actions*.
+`.github/workflows/deploy.yml` republishes on every push to `main`.
 
 To point `robertsonchiro.com` at it, add a `CNAME` file containing the domain
 and set the DNS records GitHub lists on that same settings page.
