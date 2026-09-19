@@ -204,21 +204,14 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
   display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
 
-.brand{display:flex;align-items:center;gap:12px}
-.brand-mark{width:20px;display:block}
-.brand-mark svg{width:100%;height:auto;overflow:visible}
-.mini-spine ellipse{transition:transform .5s var(--ease);transform-origin:center}
-.brand:hover .mini-spine ellipse:nth-child(odd){transform:translateX(-1.5px)}
-.brand:hover .mini-spine ellipse:nth-child(even){transform:translateX(1.5px)}
-.brand-type{display:flex;flex-direction:column;line-height:1}
-.brand-type strong{
-  font-family:var(--display);font-weight:500;font-size:1.02rem;
-  letter-spacing:-0.02em;color:var(--ink);
+/* Header lockup: the practice's own logo, scaled to the nav. */
+.brand{display:flex;align-items:center;flex:none}
+.brand img{
+  height:var(--brand-h, 48px);width:auto;
+  transition:height .45s var(--ease), opacity .3s var(--ease-soft);
 }
-.brand-type em{
-  font-style:normal;font-size:.62rem;text-transform:uppercase;
-  letter-spacing:.24em;color:var(--crimson);margin-top:3px;font-weight:500;
-}
+.brand:hover img{opacity:.82}
+.site-header.is-stuck .brand img{--brand-h:40px}
 
 .nav-desktop{display:flex;align-items:center;gap:clamp(18px,2.2vw,34px)}
 .nav-desktop a{
@@ -876,6 +869,8 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
   :root{--header-h:66px}
   .nav-desktop,.hide-sm{display:none}
   .burger{display:block}
+  .brand img{--brand-h:36px}
+  .site-header.is-stuck .brand img{--brand-h:32px}
   .hero{padding-top:calc(var(--header-h) + 34px)}
   .cards{border-radius:16px}
   .tab-bar{width:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;
