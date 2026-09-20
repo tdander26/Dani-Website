@@ -902,14 +902,19 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
 @media (max-width:480px){
   .header-actions .btn-solid{padding:.68em 1.15em;font-size:.82rem}
   .hero-cta .btn,.steps-cta .btn{width:100%}
-  .cred-row{gap:6px 0}
+  /* Two columns rather than four stacked bullets: same credentials, reads as
+     a block instead of a list, and gives the hero back ~40px of height. */
+  .cred-row{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:11px 16px;padding-top:18px;
+  }
   .cred-row li{
-    flex:0 0 100%;padding-right:0;margin-right:0;font-size:.78rem;
-    padding-left:14px;
+    flex:none;margin:0;padding:0 0 0 12px;
+    font-size:.76rem;line-height:1.35;
   }
   .cred-row li::after{display:none}
   .cred-row li::before{
-    content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+    content:"";position:absolute;left:0;top:.48em;
     width:4px;height:4px;border-radius:50%;background:var(--rose);
   }
 }
