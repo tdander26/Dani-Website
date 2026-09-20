@@ -295,9 +295,14 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
 .js .card.reveal.in > *{opacity:1;transform:none}
 
 .split{overflow:hidden}
-.split .w{display:inline-block;overflow:hidden;vertical-align:top}
+.split .w{
+  display:inline-block;overflow:hidden;vertical-align:top;
+  /* the mask extends past the line box so descenders are not shaved,
+     then pulls back so the extra depth costs no layout */
+  padding-bottom:.18em;margin-bottom:-.18em;
+}
 .split .w > span{
-  display:inline-block;transform:translateY(105%);
+  display:inline-block;transform:translateY(135%);
   transition:transform 1s var(--ease);
   transition-delay:calc(var(--wi,0) * 42ms);
 }
@@ -873,11 +878,21 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
   .site-header.is-stuck .brand img{--brand-h:32px}
   .hero{padding-top:calc(var(--header-h) + 34px)}
   .cards{border-radius:16px}
-  .tab-bar{width:100%;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;
-    border-radius:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .tab-bar::-webkit-scrollbar{display:none}
+  /* Stack the tabs rather than scroll them: a horizontal scroller hid the
+     third option entirely at this width. */
+  .tab-bar{
+    width:100%;flex-direction:column;gap:6px;
+    border-radius:18px;padding:6px;overflow:visible;
+  }
+  .tab{width:100%;padding:.85em 1.1em}
   .tab-pill{display:none}
-  .tab.is-active{background:var(--crimson)}
+  .tab.is-active{background:var(--crimson);box-shadow:0 6px 18px -8px rgba(143,21,32,.6)}
+
+  /* Give the hero portrait the full column: the decorative spine was taking
+     a fifth of the width and pushing the photo against the gutter. */
+  .spine-wrap{display:none}
+  .hero-visual{justify-content:center}
+  .portrait{max-width:min(100%,420px);margin-inline:auto}
   .field-row{grid-template-columns:1fr}
   .info-row{grid-template-columns:80px 1fr 20px;gap:10px}
   .foot-bottom{flex-direction:column}
