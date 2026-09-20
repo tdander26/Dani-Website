@@ -892,19 +892,21 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
      between the text blocks, then let the portrait bleed to both edges so it
      anchors the section instead of floating in it. */
   .hero{padding-bottom:0}
-  .hero-grid{gap:36px}
+  .hero-grid{gap:34px}
   .hero .lede{margin-bottom:1.7em}
-  .hero-cta{margin-bottom:1.9em}
+  /* no border here any more, so no padding to clear one either */
   .cred-row{border-top:0}
 
-  /* One clear action plus a quiet link, rather than two competing slabs. */
-  .hero-cta{display:block}
-  .hero-cta .btn-solid{width:100%;margin-bottom:18px}
+  /* One clear action plus a link that actually looks like a link: in ink with
+     a grey rule it read as a section heading sitting under the button. */
+  .hero-cta{display:block;margin-bottom:1.9em}
+  .hero-cta .btn-solid{width:100%;margin-bottom:20px}
   .hero-cta .btn-line{
-    width:auto;padding:0 0 3px;border:0;border-radius:0;
-    background:none;color:var(--ink);
-    border-bottom:1px solid var(--line-strong);
+    width:auto;padding:0 0 4px;border:0;border-radius:0;
+    background:none;color:var(--crimson);
+    border-bottom:1px solid rgba(191,30,45,.35);
   }
+  .hero-cta .btn-line::after{content:"\2192"}
   .hero-cta .btn-line:hover{background:none;border-bottom-color:var(--crimson)}
 
   .spine-wrap{display:none}
@@ -915,10 +917,13 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
   }
   .portrait{
     width:100%;max-width:none;margin:0;
-    border-radius:190px 190px 0 0;
+    /* a gentler arch: at full-bleed width a 190px radius became a dome that
+       cut across the subjects' heads */
+    border-radius:140px 140px 0 0;
     box-shadow:none;
   }
-  .portrait img{aspect-ratio:4/5;max-height:62vh}
+  /* 3:4 matches the source crop, so the photo is shown rather than cut down */
+  .portrait img{aspect-ratio:3/4;max-height:64vh}
   .portrait-tag{left:var(--gutter);right:var(--gutter);bottom:22px}
   .field-row{grid-template-columns:1fr}
   .info-row{grid-template-columns:80px 1fr 20px;gap:10px}
@@ -933,7 +938,7 @@ h1,h2,h3,h4{margin:0;font-weight:400;letter-spacing:-0.02em}
      a block instead of a list, and gives the hero back ~40px of height. */
   .cred-row{
     display:grid;grid-template-columns:1fr 1fr;
-    gap:11px 16px;padding-top:18px;
+    gap:11px 16px;padding-top:0;
   }
   .cred-row li{
     flex:none;margin:0;padding:0 0 0 12px;

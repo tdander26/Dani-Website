@@ -106,7 +106,15 @@
     onScroll();
 
     if (!reduced) {
+      /* No parallax at phone width: the hero portrait bleeds to the edges and
+         is meant to sit flush against the ribbon, so a scroll-linked shift
+         would open and close a gap along that seam as you scroll. */
+      var narrow = window.innerWidth <= 760;
       parallax.forEach(function (el) {
+        if (narrow) {
+          if (el.style.transform) el.style.transform = '';
+          return;
+        }
         var r = el.getBoundingClientRect();
         if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
         var mid = r.top + r.height / 2 - window.innerHeight / 2;
